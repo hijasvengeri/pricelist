@@ -292,8 +292,6 @@
 
 
 
-
-
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import jsPDF from 'jspdf';
@@ -314,7 +312,6 @@ const ProductsTable = () => {
       const response = await axios.get('https://pricelist-ib0a.onrender.com/api/products');
       setProducts(response.data);
       setFilteredProducts(response.data); // Initialize filteredProducts with all products
-      console.log('Fetched Products:', response.data); // Log fetched products
     } catch (error) {
       console.error('Error fetching the products data', error);
     }
@@ -337,7 +334,6 @@ const ProductsTable = () => {
       (product.items && product.items.toLowerCase().includes(searchTerm))
     );
     setFilteredProducts(filtered);
-    console.log('Filtered Products:', filtered); // Log filtered products
   };
 
   const generatePDF = () => {
@@ -362,8 +358,6 @@ const ProductsTable = () => {
       ];
       tableRows.push(productData);
     });
-
-    console.log('Table Rows:', tableRows); // Log table rows
 
     doc.autoTable({
       head: [tableColumn],
@@ -428,8 +422,21 @@ const ProductsTable = () => {
         <tbody>
           {filteredProducts.map((product, index) => (
             <tr key={product.id}>
-              <td>{product.slno}</td>
-              <td>{product.items}</td>
+              {/* Sl No column */}
+              {index === 0 || product.items !== filteredProducts[index - 1].items ? (
+                <td rowSpan={mergeCells().find(cell => cell.item === product.items).rowSpan}>
+                  {product.slno}
+                </td>
+              ) : null}
+
+              {/* Items column */}
+              {index === 0 || product.items !== filteredProducts[index - 1].items ? (
+                <td rowSpan={mergeCells().find(cell => cell.item === product.items).rowSpan}>
+                  {product.items}
+                </td>
+              ) : null}
+
+              {/* Brand column */}
               <td>{product.brand}</td>
               <td>{product.single}</td>
               <td>{product.price1}</td>
@@ -439,9 +446,13 @@ const ProductsTable = () => {
               <td>{product.price5}</td>
               <td>{(product.gst * 100).toFixed(0)}%</td>
               <td>{product.mrp}</td>
-              <td>
-                {/* <img src={product.imageURL} alt={product.items} className="img" /> */}
-              </td>
+
+              {/* Image column */}
+              {index === 0 || product.items !== filteredProducts[index - 1].items ? (
+                <td rowSpan={mergeCells().find(cell => cell.item === product.items).rowSpan}>
+                  {/* <img src={product.imageURL} alt={product.items} className="img" /> */}
+                </td>
+              ) : null}
             </tr>
           ))}
         </tbody>
