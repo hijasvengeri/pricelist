@@ -455,7 +455,6 @@
 
 
 
-
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import jsPDF from 'jspdf';
@@ -476,7 +475,6 @@ const ProductsTable = () => {
       const response = await axios.get('https://pricelist-ib0a.onrender.com/api/products');
       setProducts(response.data);
       setFilteredProducts(response.data); // Initialize filteredProducts with all products
-      console.log('Fetched Products:', response.data); // Log fetched products
     } catch (error) {
       console.error('Error fetching the products data', error);
     }
@@ -499,7 +497,6 @@ const ProductsTable = () => {
       (product.items && product.items.toLowerCase().includes(searchTerm))
     );
     setFilteredProducts(filtered);
-    console.log('Filtered Products:', filtered); // Log filtered products
   };
 
   const mergeCells = (products) => {
@@ -575,8 +572,6 @@ const ProductsTable = () => {
         ]);
       }
     });
-
-    console.log('Table Rows:', tableRows); // Log table rows
 
     doc.autoTable({
       head: [tableColumn],
