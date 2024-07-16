@@ -1,0 +1,28 @@
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: small;
+}
+
+.th-td {
+  border: 1px solid #000; /* Normal border for table cells */
+  padding: 8px;
+  text-align: center;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: small;
+}
+
+.th-td[colspan] {
+  border: 2px solid #000; /* Thick border for cells with rowspan */
+}
+
+.col-items {
+  width: 150px;
+  word-wrap: break-word;
+}
+
+.col-image {
+  width: 200px;
+  word-wrap: break-word;
+}

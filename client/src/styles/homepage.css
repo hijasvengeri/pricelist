@@ -1,0 +1,79 @@
+/* 
+
+body {
+  font-family: 'Open Sans', sans-serif;
+  }
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-top: 20px;
+  }
+  
+  .column {
+    flex: 0 0 calc(40% - 20px);
+    margin-bottom: 20px;
+    padding: 10px;
+    border: 1px solid #e2e8f0;
+    border-radius: 5px;
+    background-color: #f7fafc;
+    font-family: 'Open Sans', sans-serif !important;
+    font-size:14px
+   
+    
+  }
+  
+  ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  li {
+    margin: 10px 0;
+  }
+   */
+
+
+
+   /* Import the Open Sans font from Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap');
+
+/* Apply the Open Sans font to the entire body */
+body {
+  font-family: 'Open Sans', sans-serif;
+}
+
+/* Define styles for the container holding the columns */
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+/* Define styles for each column */
+.column {
+  flex: 0 0 calc(40% - 20px); /* Set the initial width for each column */
+  margin-bottom: 20px;
+  padding: 10px;
+  border: 1px solid #e2e8f0;
+  border-radius: 5px;
+  background-color: #f7fafc;
+  font-size: 14px;
+}
+
+/* Remove !important from font-family here, as it's already applied to the body */
+.column {
+  font-family: 'Open Sans', sans-serif;
+}
+
+/* Define styles for unordered lists */
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+/* Define styles for list items */
+li {
+  margin: 10px 0;
+}

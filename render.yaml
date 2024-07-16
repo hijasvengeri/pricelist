@@ -1,0 +1,24 @@
+services:
+  - type: web
+    name: client
+    env: node
+    plan: free
+    buildCommand: npm install && npm run build
+    startCommand: npm run dev
+    rootDir: client
+    envVars:
+      - key: NODE_VERSION
+        value: 14
+
+  - type: web
+    name: server
+    env: node
+    plan: free
+    buildCommand: npm install
+    startCommand: npm run dev
+    rootDir: server
+    envVars:
+      - key: NODE_VERSION
+        value: 14
+      - key: MONGODB_URI
+        value: YOUR_MONGODB_URI
