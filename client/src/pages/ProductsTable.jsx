@@ -454,7 +454,6 @@
 
 
 
-
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import jsPDF from 'jspdf';
@@ -595,6 +594,19 @@ const ProductsTable = () => {
         if (data.column.index === 11 && data.cell.section === 'body') {
           // Placeholder for handling images
           // doc.addImage(data.cell.raw, 'JPEG', data.cell.x + 2, data.cell.y + 2, 10, 10);
+        }
+      },
+      willDrawCell: (data) => {
+        const rowIndex = data.row.index;
+        const cellIndex = data.column.index;
+        const product = filteredProducts[rowIndex];
+
+        if (cellIndex === 0 || cellIndex === 1 || cellIndex === 11) {
+          const prevProduct = rowIndex > 0 ? filteredProducts[rowIndex - 1] : null;
+
+          if (prevProduct && product.items === prevProduct.items) {
+            data.cell.text = ''; // Clear text for merged cells
+          }
         }
       }
     });
