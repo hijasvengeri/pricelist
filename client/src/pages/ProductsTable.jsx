@@ -15,7 +15,7 @@ const ProductsTable = () => {
 
   const fetchProducts = async () => {
     try {
-      const response = await axios.get('https://pricelist-kltx.onrender.com/api/products');
+      const response = await axios.get('https://pricelist-ib0a.onrender.com/api/products');
       setProducts(response.data);
       setFilteredProducts(response.data); // Initialize filteredProducts with all products
     } catch (error) {
