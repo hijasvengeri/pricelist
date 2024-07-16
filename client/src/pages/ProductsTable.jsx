@@ -291,6 +291,8 @@
 
 
 
+
+
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import jsPDF from 'jspdf';
@@ -353,7 +355,7 @@ const ProductsTable = () => {
         product.price5,
         (product.gst * 100).toFixed(0) + '%',
         product.mrp,
-        product.imageURL
+        '' // Placeholder for image URL
       ];
       tableRows.push(productData);
     });
@@ -378,7 +380,8 @@ const ProductsTable = () => {
       },
       didDrawCell: (data) => {
         if (data.column.index === 11 && data.cell.section === 'body') {
-          doc.addImage(data.cell.raw, 'JPEG', data.cell.x + 2, data.cell.y + 2, 10, 10);
+          // Placeholder for handling images
+          // doc.addImage(data.cell.raw, 'JPEG', data.cell.x + 2, data.cell.y + 2, 10, 10);
         }
       }
     });
