@@ -456,8 +456,6 @@
 
 
 
-
-
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import jsPDF from 'jspdf';
@@ -540,22 +538,42 @@ const ProductsTable = () => {
     const rowSpans = {};
     mergedCells.forEach(cell => rowSpans[cell.item] = cell.rowSpan);
 
-    filteredProducts.forEach(product => {
-      const productData = [
-        product.slno,
-        product.items,
-        product.brand,
-        product.single,
-        product.price1,
-        product.price2,
-        product.price3,
-        product.price4,
-        product.price5,
-        (product.gst * 100).toFixed(0) + '%',
-        product.mrp,
-        '' // Placeholder for image URL
-      ];
-      tableRows.push(productData);
+    filteredProducts.forEach((product, index) => {
+      const previousItem = index > 0 ? filteredProducts[index - 1].items : null;
+      const shouldMerge = index === 0 || product.items !== previousItem;
+      const rowSpan = shouldMerge ? rowSpans[product.items] : 0;
+
+      if (shouldMerge) {
+        tableRows.push([
+          product.slno,
+          product.items,
+          product.brand,
+          product.single,
+          product.price1,
+          product.price2,
+          product.price3,
+          product.price4,
+          product.price5,
+          (product.gst * 100).toFixed(0) + '%',
+          product.mrp,
+          '' // Placeholder for image URL
+        ]);
+      } else {
+        tableRows.push([
+          '',
+          '',
+          product.brand,
+          product.single,
+          product.price1,
+          product.price2,
+          product.price3,
+          product.price4,
+          product.price5,
+          (product.gst * 100).toFixed(0) + '%',
+          product.mrp,
+          '' // Placeholder for image URL
+        ]);
+      }
     });
 
     console.log('Table Rows:', tableRows); // Log table rows
