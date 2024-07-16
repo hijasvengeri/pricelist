@@ -452,7 +452,6 @@
 
 
 
-
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import jsPDF from 'jspdf';
@@ -621,18 +620,27 @@ const ProductsTable = () => {
         placeholder="Search by Brand or Items..."
         value={searchTerm}
         onChange={handleSearchChange}
+        style={{
+          padding: '5px',
+          borderRadius: '5px',
+          marginRight: '10px',
+          border: '1px solid #ccc',
+          verticalAlign: 'middle',
+        }}
       />
 
       {/* Generate PDF button */}
-      <div style={{ textAlign: 'right', margin: '10px 0' }}>
+      <div style={{ display: 'inline-block', float: 'right' }}>
         <button
           onClick={generatePDF}
           style={{
             backgroundColor: 'blue',
             color: 'white',
             border: '1px solid blue',
-            padding: '10px 20px',
+            padding: '5px 15px',
+            borderRadius: '5px',
             cursor: 'pointer',
+            verticalAlign: 'middle',
           }}
         >
           Generate PDF
