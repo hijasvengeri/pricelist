@@ -453,7 +453,6 @@
 
 
 
-
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import jsPDF from 'jspdf';
@@ -625,7 +624,20 @@ const ProductsTable = () => {
       />
 
       {/* Generate PDF button */}
-      <button onClick={generatePDF}>Generate PDF</button>
+      <div style={{ textAlign: 'right', margin: '10px 0' }}>
+        <button
+          onClick={generatePDF}
+          style={{
+            backgroundColor: 'blue',
+            color: 'white',
+            border: '1px solid blue',
+            padding: '10px 20px',
+            cursor: 'pointer',
+          }}
+        >
+          Generate PDF
+        </button>
+      </div>
 
       {/* Table */}
       <table className="table">
