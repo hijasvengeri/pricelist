@@ -711,7 +711,7 @@ const ProductsTable = () => {
               {/* Image column */}
               {index === 0 || product.items !== filteredProducts[index - 1].items ? (
                 <td rowSpan={mergeCells().find(cell => cell.item === product.items).rowSpan}>
-                  <img src={product.imageURL} alt={product.items} className="img" />
+                  {/* <img src={product.imageURL} alt={product.items} className="img" /> */}
                 </td>
               ) : null}
             </tr>
