@@ -745,7 +745,7 @@ const ProductsTable = () => {
 
   const fetchProducts = async () => {
     try {
-      const response = await axios.get('http://localhost:5000/api/products');
+      const response = await axios.get('https://pricelist-ib0a.onrender.com/api/products');
       setProducts(response.data);
       setFilteredProducts(response.data); // Initialize filteredProducts with all products
     } catch (error) {
@@ -788,7 +788,7 @@ const ProductsTable = () => {
     formData.append('image', file);
 
     try {
-      const response = await axios.post('http://localhost:5000/api/upload', formData, {
+      const response = await axios.post('https://pricelist-ib0a.onrender.com/api/products', formData, {
         headers: {
           'Content-Type': 'multipart/form-data',
         },
@@ -816,7 +816,7 @@ const ProductsTable = () => {
     };
 
     try {
-      const response = await axios.post('http://localhost:5000/api/products', newProduct);
+      const response = await axios.post('https://pricelist-ib0a.onrender.com/api/products', newProduct);
       setProducts([...products, response.data]);
       setFilteredProducts([...filteredProducts, response.data]);
       setImage(null);
