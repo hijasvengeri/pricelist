@@ -19,30 +19,30 @@ const ProductsTable = () => {
     fetchProducts();
   }, []);
 
-  // const fetchProducts = async () => {
-  //   try {
-  //     const response = await axios.get('https://pricelist-ib0a.onrender.com/api/products');
-  //     setProducts(response.data);
-  //     setFilteredProducts(response.data); // Initialize filteredProducts with all products
-  //   } catch (error) {
-  //     console.error('Error fetching the products data', error);
-  //   }
-  // };
-
-
   const fetchProducts = async () => {
     try {
-      const apiUrl = process.env.NODE_ENV === 'development'
-        ? 'http://localhost:3000/api/products' // Local server URL
-        : 'https://pricelist-1.onrender.com/api/products'; // Deployed server URL
-  
-      const response = await axios.get(apiUrl);
+      const response = await axios.get('https://pricelist-ib0a.onrender.com/api/products');
       setProducts(response.data);
-      setFilteredProducts(response.data);
+      setFilteredProducts(response.data); // Initialize filteredProducts with all products
     } catch (error) {
       console.error('Error fetching the products data', error);
     }
   };
+
+
+  // const fetchProducts = async () => {
+  //   try {
+  //     const apiUrl = process.env.NODE_ENV === 'development'
+  //       ? 'http://localhost:3000/api/products' // Local server URL
+  //       : 'https://pricelist-1.onrender.com/api/products'; // Deployed server URL
+  
+  //     const response = await axios.get(apiUrl);
+  //     setProducts(response.data);
+  //     setFilteredProducts(response.data);
+  //   } catch (error) {
+  //     console.error('Error fetching the products data', error);
+  //   }
+  // };
 
   const handleSearchChange = (event) => {
     const searchTerm = event.target.value.toLowerCase();
