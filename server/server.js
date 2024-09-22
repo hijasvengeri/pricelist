@@ -8,7 +8,7 @@ const app = express();
 
 // CORS middleware configuration
 app.use(cors({
-  origin: 'https://pricelist-1.onrender.com', // Allow requests from this origin
+  origin: ['https://pricelist-1.onrender.com', 'http://localhost:5173'], // Allow requests from this origin
   methods: ['GET', 'POST'], // Allow GET and POST requests
   allowedHeaders: ['Content-Type', 'Authorization'], // Allow specific headers
 }));
